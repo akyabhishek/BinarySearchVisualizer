@@ -6,7 +6,7 @@ Welcome to the Binary Search Visualizer! This React application helps you visual
 
 Check out the live preview of the application [here](https://binary-search-visualizer-mauve.vercel.app/).
 
-![Live Preview](.public/assets/preview.png)
+![Live Preview](./public/assets/preview.png)
 
 ## Getting Started
 
