@@ -329,7 +329,6 @@ const BinarySearchVisualizer: React.FC = () => {
       )}
 
       <ArrayDisplay array={array} low={low} high={high} mid={mid} />
-
       {steps.length > 0 && (
         <div className="mt-6 w-full max-w-lg p-4 bg-white rounded-lg shadow-md">
           <h2 className="text-2xl font-bold mb-4 text-indigo-500">
