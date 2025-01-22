@@ -61,15 +61,14 @@ const BinarySearchVisualizer: React.FC = () => {
 
     let start = 0;
     let end = array.length - 1;
+    let found = false;
 
     while (start <= end) {
       const middle = Math.floor((start + end) / 2);
       setMid(middle);
 
-      setSteps((prevSteps) => [
-        ...prevSteps,
-        `low=${start}, high=${end}, mid=${middle}, array[mid]=${array[middle]}`,
-      ]);
+      const currentStep = `low=${start}, high=${end}, mid=${middle}, array[mid]=${array[middle]}`;
+      setSteps((prevSteps) => [...prevSteps, currentStep]);
 
       if (array[middle] === target) {
         setMessage(`Found ${target} at index ${middle}`);
@@ -77,6 +76,7 @@ const BinarySearchVisualizer: React.FC = () => {
           ...prevSteps,
           `Target ${target} found at index ${middle}`,
         ]);
+        found = true;
         break;
       } else if (array[middle] < target) {
         start = middle + 1;
@@ -92,13 +92,11 @@ const BinarySearchVisualizer: React.FC = () => {
         ]);
       }
 
-      setLow(start);
-      setHigh(end);
-
+      // Add a delay for visualization purposes
       await new Promise<void>((resolve) => setTimeout(resolve, 1000));
     }
 
-    if (start > end) {
+    if (!found) {
       setSteps((prevSteps) => [
         ...prevSteps,
         `Target ${target} not found in the array`,
@@ -108,6 +106,7 @@ const BinarySearchVisualizer: React.FC = () => {
 
     setIsSearching(false);
   };
+
 
   const handleReset = (): void => {
     setArrayInput("");

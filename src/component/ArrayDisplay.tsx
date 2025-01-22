@@ -38,11 +38,13 @@ const ArrayDisplay: React.FC<ArrayDisplayProps> = ({
                   <div
                     key={index}
                     className={`flex flex-col items-center px-5 py-2 rounded-md shadow-sm font-semibold text-center transition-all duration-200 ease-in-out transform ${
-                      actualIndex === mid
-                        ? "bg-yellow-500 text-white scale-105"
-                        : actualIndex >= low && actualIndex <= high
-                        ? "bg-green-500 text-white scale-105"
-                        : "bg-gray-200 text-gray-700"
+                         low > high
+                            ? "bg-red-500 text-white" // Mark all elements red if not found
+                            : actualIndex === mid
+                                ? "bg-yellow-500 text-white scale-105" // Highlight mid element
+                                : actualIndex >= low && actualIndex <= high
+                                    ? "bg-green-500 text-white scale-105" // Highlight elements within range
+                                    : "bg-gray-200 text-gray-700" // Default style for other elements
                     } hover:scale-105`}
                   >
                     <span className="text-xs text-gray-500">{actualIndex}</span>
